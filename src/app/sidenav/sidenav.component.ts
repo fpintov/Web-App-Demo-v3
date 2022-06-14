@@ -1,19 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 import { navbarData } from './nav-data';
+
+interface SideNavToggle{
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit {
+
+export class SidenavComponent {
+
+  @Output() onToggleSidenav: EventEmitter<SideNavToggle> = new EventEmitter();
 
   collapsed = false;
+  screenWidth = 0;
   navData = navbarData;
 
-  constructor() { }
+  toggleCollapse(): void{
+    this.collapsed = !this.collapsed;
+    this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
 
-  ngOnInit(): void {
+  closeSidenav(): void{
+    this.collapsed = false;
+    this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
 
 }
