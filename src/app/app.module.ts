@@ -15,6 +15,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AbonosComponent } from './abonos/abonos.component';
 import { EgresosComponent } from './egresos/egresos.component';
 import { InformesComponent } from './informes/informes.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InformesComponent } from './informes/informes.component';
     SettingsComponent,
     AbonosComponent,
     EgresosComponent,
-    InformesComponent
+    InformesComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
